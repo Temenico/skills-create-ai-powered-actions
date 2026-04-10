@@ -39554,7 +39554,8 @@ async function run() {
 
     core.setOutput("result", JSON.stringify(rating));
   } catch (error) {
-    core.setFailed(error.message);
+    const message = error instanceof Error ? error.message : String(error);
+    core.setFailed(message);
   }
 }
 
